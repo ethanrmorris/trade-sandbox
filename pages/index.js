@@ -1,14 +1,12 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 
-export default function Home({ results }) {
-  console.log(results);
+export default function Home({ sortedResults }) {
   return (
     <div className={styles.container}>
       <h1>Chug Trades</h1>
       <div className={styles.grid}>
-        {results.map((trade) => (
+        {sortedResults.map((trade) => (
           <Link href={`/trades/${trade.id}`} as={`/trades/${trade.id}`}>
             <a>
               <div key={trade.id} className={styles.card}>
@@ -20,14 +18,16 @@ export default function Home({ results }) {
                         .charAt(0)
                         .toUpperCase()
                         .concat(trade.owner_1.slice(1))}
+                      {' Acquires'}
                     </h2>
                     {trade.players_1.map((player) => (
                       <p>
                         {player.name}
-                        <span>
-                          {' '}
-                          {player.position + ' -'} {player.team}
-                        </span>
+                        {player.player ? (
+                          <div>{`${player.player}, ${player.position} - ${player.team}`}</div>
+                        ) : (
+                          <span>{`  ${player.position} - ${player.team}`}</span>
+                        )}
                       </p>
                     ))}
                   </div>
@@ -37,14 +37,16 @@ export default function Home({ results }) {
                         .charAt(0)
                         .toUpperCase()
                         .concat(trade.owner_2.slice(1))}
+                      {' Acquires'}
                     </h2>
                     {trade.players_2.map((player) => (
                       <p>
                         {player.name}
-                        <span>
-                          {' '}
-                          {player.position + ' -'} {player.team}
-                        </span>
+                        {player.team && (
+                          <span>
+                            {' ' + player.position + ' -'} {player.team}
+                          </span>
+                        )}
                       </p>
                     ))}
                   </div>
@@ -55,14 +57,16 @@ export default function Home({ results }) {
                           .charAt(0)
                           .toUpperCase()
                           .concat(trade.owner_3.slice(1))}
+                        {' Acquires'}
                       </h2>
                       {trade.players_3.map((player) => (
                         <p>
                           {player.name}
-                          <span>
-                            {' '}
-                            {player.position + ' -'} {player.team}
-                          </span>
+                          {player.team && (
+                            <span>
+                              {' ' + player.position + ' -'} {player.team}
+                            </span>
+                          )}
                         </p>
                       ))}
                     </div>
@@ -77,13 +81,13 @@ export default function Home({ results }) {
   );
 }
 
-export async function getStaticProps(context) {
+export async function getStaticProps() {
   try {
     const res = await fetch('https://ethanrmorris.github.io/v1/trades.json');
     const results = await res.json();
-
+    const sortedResults = results.reverse();
     return {
-      props: { results },
+      props: { sortedResults },
     };
   } catch (err) {
     console.error(err);
