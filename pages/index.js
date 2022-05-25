@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 
-export default function Home({ sortedResults }) {
+export default function Home({ results }) {
   return (
     <div className={styles.container}>
       <h1>Chug Trades</h1>
       <div className={styles.grid}>
-        {sortedResults.map((trade) => (
+        {results.map((trade) => (
           <Link href={`/trades/${trade.id}`} as={`/trades/${trade.id}`}>
             <a>
               <div key={trade.id} className={styles.card}>
@@ -21,12 +21,18 @@ export default function Home({ sortedResults }) {
                       {' Acquires'}
                     </h2>
                     {trade.players_1.map((player) => (
-                      <p>
+                      <p className={styles.playerName}>
                         {player.name}
                         {player.player ? (
-                          <div>{`${player.player}, ${player.position} - ${player.team}`}</div>
+                          <div
+                            className={styles.player}
+                          >{`(${player.player}, ${player.position} - ${player.team})`}</div>
                         ) : (
-                          <span>{`  ${player.position} - ${player.team}`}</span>
+                          <span>
+                            {player.position
+                              ? `  ${player.position} - ${player.team}`
+                              : null}
+                          </span>
                         )}
                       </p>
                     ))}
@@ -40,11 +46,17 @@ export default function Home({ sortedResults }) {
                       {' Acquires'}
                     </h2>
                     {trade.players_2.map((player) => (
-                      <p>
+                      <p className={styles.playerName}>
                         {player.name}
-                        {player.team && (
+                        {player.player ? (
+                          <div
+                            className={styles.player}
+                          >{`(${player.player}, ${player.position} - ${player.team})`}</div>
+                        ) : (
                           <span>
-                            {' ' + player.position + ' -'} {player.team}
+                            {player.position
+                              ? `  ${player.position} - ${player.team}`
+                              : null}
                           </span>
                         )}
                       </p>
@@ -60,11 +72,17 @@ export default function Home({ sortedResults }) {
                         {' Acquires'}
                       </h2>
                       {trade.players_3.map((player) => (
-                        <p>
+                        <p className={styles.playerName}>
                           {player.name}
-                          {player.team && (
+                          {player.player ? (
+                            <div
+                              className={styles.player}
+                            >{`(${player.player}, ${player.position} - ${player.team})`}</div>
+                          ) : (
                             <span>
-                              {' ' + player.position + ' -'} {player.team}
+                              {player.position
+                                ? `  ${player.position} - ${player.team}`
+                                : null}
                             </span>
                           )}
                         </p>
@@ -84,10 +102,10 @@ export default function Home({ sortedResults }) {
 export async function getStaticProps() {
   try {
     const res = await fetch('https://ethanrmorris.github.io/v1/trades.json');
-    const results = await res.json();
-    const sortedResults = results.reverse();
+    const data = await res.json();
+    const results = data.reverse();
     return {
-      props: { sortedResults },
+      props: { results },
     };
   } catch (err) {
     console.error(err);
