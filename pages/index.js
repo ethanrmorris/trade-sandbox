@@ -5,6 +5,17 @@ export default function Home({ results }) {
   return (
     <div className={styles.container}>
       <h1>Chug Trades</h1>
+      <div>
+        <Link href="/">
+          <a>Trades</a>
+        </Link>
+        <Link href="/stats">
+          <a>Stats</a>
+        </Link>
+        <Link href="/ethan">
+          <a>Silverbacks</a>
+        </Link>
+      </div>
       <div className={styles.grid}>
         {results.map((trade) => (
           <div key={trade.id} className={styles.card}>
