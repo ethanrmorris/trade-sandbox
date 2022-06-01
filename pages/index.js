@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css';
 export default function Home({ results }) {
   return (
     <div className={styles.container}>
-      <h1>Chug Trades</h1>
+      <h1>Chug League Trades</h1>
       <div className={styles.gap}>
         <Link href="/">
           <a>Trades</a>
