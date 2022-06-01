@@ -5,7 +5,7 @@ export default function Ethan() {
   return (
     <div className={styles.container}>
       <h1>Ethan</h1>
-      <div>
+      <div className={styles.gap}>
         <Link href="/">
           <a>Trades</a>
         </Link>

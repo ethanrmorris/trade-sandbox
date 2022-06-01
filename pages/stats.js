@@ -5,7 +5,7 @@ export default function Stats() {
   return (
     <div className={styles.container}>
       <h1>Stats</h1>
-      <div>
+      <div className={styles.gap}>
         <Link href="/">
           <a>Trades</a>
         </Link>
