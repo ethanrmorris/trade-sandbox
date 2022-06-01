@@ -19,7 +19,9 @@ export default function Home({ results }) {
       <div className={styles.grid}>
         {results.map((trade) => (
           <div key={trade.id} className={styles.card}>
-            <p>{trade.date}</p>
+            <p>
+              #{trade.id} - {trade.date}
+            </p>
             <div className={trade.owner_3 ? styles.tradeDiv3 : styles.tradeDiv}>
               <div>
                 <h2>
