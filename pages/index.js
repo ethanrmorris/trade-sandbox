@@ -76,7 +76,7 @@ export default function Home({ results }) {
               {trade.owner_3 && (
                 <div>
                   <h2>
-                    {trade.owner_3
+                    {trade.owner_2
                       .charAt(0)
                       .toUpperCase()
                       .concat(trade.owner_3.slice(1))}
