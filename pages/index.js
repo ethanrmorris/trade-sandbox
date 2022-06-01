@@ -5,7 +5,7 @@ export default function Home({ results }) {
   return (
     <div className={styles.container}>
       <h1>Chug Trades</h1>
-      <div>
+      <div className={styles.gap}>
         <Link href="/">
           <a>Trades</a>
         </Link>
