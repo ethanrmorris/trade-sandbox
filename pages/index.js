@@ -32,20 +32,22 @@ export default function Home({ results }) {
                   {' Acquires'}
                 </h2>
                 {trade.players_1.map((player) => (
-                  <p className={styles.playerName}>
-                    {player.name}
-                    {player.player ? (
-                      <div
-                        className={styles.player}
-                      >{`(${player.player}, ${player.position} - ${player.team})`}</div>
-                    ) : (
-                      <span>
-                        {player.position
-                          ? `  ${player.position} - ${player.team}`
-                          : null}
-                      </span>
-                    )}
-                  </p>
+                  <Link href={`/players/${player.id}`}>
+                    <a className={styles.playerName}>
+                      {player.name}
+                      {player.player ? (
+                        <div
+                          className={styles.player}
+                        >{`(${player.player}, ${player.position} - ${player.team})`}</div>
+                      ) : (
+                        <span>
+                          {player.position
+                            ? `  ${player.position} - ${player.team}`
+                            : null}
+                        </span>
+                      )}
+                    </a>
+                  </Link>
                 ))}
               </div>
               <div>
