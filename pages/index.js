@@ -119,7 +119,6 @@ export async function getStaticProps() {
     const res = await fetch('https://ethanrmorris.github.io/v1/trades.json');
     const data = await res.json();
     const results = data.reverse();
-    console.log(results);
     return {
       props: { results },
     };
