@@ -15,9 +15,6 @@ export default function Owners({ results }) {
         <Link href="/owners">
           <a>Owners Page</a>
         </Link>
-        <Link href="/owners/1">
-          <a>Silverbacks</a>
-        </Link>
       </div>
       <div>
         {results.map((owner) => (
