@@ -1,11 +1,7 @@
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
-import { players } from '../lib/players.js';
-import { roster } from '../lib/roster.js';
 
 export default function Ethan() {
-
-
   return (
     <div className={styles.container}>
       <h1>Ethan</h1>
@@ -20,15 +16,7 @@ export default function Ethan() {
           <a>Silverbacks</a>
         </Link>
       </div>
-      <div>
-        {roster.map((player) => (
-          <div key={players[player].player_id}>
-            <p>
-              {players[player].number} - {players[player].full_name}
-            </p>
-          </div>
-        ))}
-      </div>
+      <div></div>
     </div>
   );
 }

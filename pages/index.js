@@ -59,33 +59,8 @@ export default function Home({ results }) {
                   {' Acquires'}
                 </h2>
                 {trade.players_2.map((player) => (
-                  <p className={styles.playerName}>
-                    {player.name}
-                    {player.player ? (
-                      <div
-                        className={styles.player}
-                      >{`(${player.player}, ${player.position} - ${player.team})`}</div>
-                    ) : (
-                      <span>
-                        {player.position
-                          ? `  ${player.position} - ${player.team}`
-                          : null}
-                      </span>
-                    )}
-                  </p>
-                ))}
-              </div>
-              {trade.owner_3 && (
-                <div>
-                  <h2>
-                    {trade.owner_3
-                      .charAt(0)
-                      .toUpperCase()
-                      .concat(trade.owner_3.slice(1))}
-                    {' Acquires'}
-                  </h2>
-                  {trade.players_3.map((player) => (
-                    <p className={styles.playerName}>
+                  <Link href={`/players/${player.id}`}>
+                    <a className={styles.playerName}>
                       {player.name}
                       {player.player ? (
                         <div
@@ -98,7 +73,36 @@ export default function Home({ results }) {
                             : null}
                         </span>
                       )}
-                    </p>
+                    </a>
+                  </Link>
+                ))}
+              </div>
+              {trade.owner_3 && (
+                <div>
+                  <h2>
+                    {trade.owner_3
+                      .charAt(0)
+                      .toUpperCase()
+                      .concat(trade.owner_3.slice(1))}
+                    {' Acquires'}
+                  </h2>
+                  {trade.players_3.map((player) => (
+                    <Link href={`/players/${player.id}`}>
+                      <a className={styles.playerName}>
+                        {player.name}
+                        {player.player ? (
+                          <div
+                            className={styles.player}
+                          >{`(${player.player}, ${player.position} - ${player.team})`}</div>
+                        ) : (
+                          <span>
+                            {player.position
+                              ? `  ${player.position} - ${player.team}`
+                              : null}
+                          </span>
+                        )}
+                      </a>
+                    </Link>
                   ))}
                 </div>
               )}
@@ -115,6 +119,7 @@ export async function getStaticProps() {
     const res = await fetch('https://ethanrmorris.github.io/v1/trades.json');
     const data = await res.json();
     const results = data.reverse();
+    console.log(results);
     return {
       props: { results },
     };
