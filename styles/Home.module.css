@@ -78,6 +78,7 @@
 
 a.playerName {
   margin: 0.25rem 0;
+  display: block;
 }
 
 @media (max-width: 600px) {
