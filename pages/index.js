@@ -12,7 +12,10 @@ export default function Home({ results }) {
         <Link href="/stats">
           <a>Stats</a>
         </Link>
-        <Link href="/ethan">
+        <Link href="/owners">
+          <a>Owners Page</a>
+        </Link>
+        <Link href="/owners/ethan">
           <a>Silverbacks</a>
         </Link>
       </div>
