@@ -15,9 +15,6 @@ export default function Stats() {
         <Link href="/owners">
           <a>Owners Page</a>
         </Link>
-        <Link href="/owners/ethan">
-          <a>Silverbacks</a>
-        </Link>
       </div>
     </div>
   );

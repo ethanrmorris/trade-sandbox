@@ -15,9 +15,6 @@ export default function Manager({ results, currentOwner }) {
         <Link href="/owners">
           <a>Owners Page</a>
         </Link>
-        <Link href="/owners/ethan">
-          <a>Silverbacks</a>
-        </Link>
       </div>
       <div>
         {results.map((player) => (
@@ -35,14 +32,11 @@ export async function getStaticPaths() {
   // Call an external API endpoint to get posts
   const res = await fetch('https://ethanrmorris.github.io/v1/owners.json');
   const owners = await res.json();
-  // console.log(owners);
 
   // Get the paths we want to pre-render based on posts
   const paths = owners.map((owner) => ({
     params: { slug: owner.id },
   }));
-
-  // console.log(paths);
 
   // We'll pre-render only these paths at build time.
   // { fallback: false } means other routes should 404.
