@@ -106,3 +106,7 @@ a.playerName:hover {
   display: flex;
   gap: 40px;
 }
+
+.anchorSpace {
+  padding: 20px 0;
+}

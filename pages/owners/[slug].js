@@ -18,8 +18,10 @@ export default function Manager({ results, currentOwner }) {
       </div>
       <div>
         {results.map((player) => (
-          <div key={player.id}>
-            <p>{`${player.number} ${player.position} ${player.full_name}`}</p>
+          <div key={player.id} className={styles.anchorSpace}>
+            <Link href={`/players/${player.player_id}`}>
+              <a>{`${player.number} ${player.position} ${player.full_name}`}</a>
+            </Link>
           </div>
         ))}
       </div>

@@ -3,7 +3,7 @@ import styles from '../../styles/Home.module.css';
 
 export default function Owners({ results }) {
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Owners Page</h1>
       <div className={styles.gap}>
         <Link href="/">
@@ -18,7 +18,7 @@ export default function Owners({ results }) {
       </div>
       <div>
         {results.map((owner) => (
-          <div key={owner.id}>
+          <div key={owner.id} className={styles.anchorSpace}>
             <Link href={`/owners/${owner.id}`}>
               <a>{owner.team}</a>
             </Link>
