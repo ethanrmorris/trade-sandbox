@@ -6,7 +6,10 @@ export default function Manager({ results, currentOwner }) {
     <div className={styles.container}>
       <h1>{currentOwner[0].team}</h1>
       <div className={styles.gap}>
-        <Link href="/">
+      <Link href="/">
+          <a>Home</a>
+        </Link>
+        <Link href="/trades">
           <a>Trades</a>
         </Link>
         <Link href="/stats">

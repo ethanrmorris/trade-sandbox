@@ -6,7 +6,10 @@ export default function Owners({ results }) {
     <div className={styles.container}>
       <h1>Owners Page</h1>
       <div className={styles.gap}>
-        <Link href="/">
+      <Link href="/">
+          <a>Home</a>
+        </Link>
+        <Link href="/trades">
           <a>Trades</a>
         </Link>
         <Link href="/stats">
