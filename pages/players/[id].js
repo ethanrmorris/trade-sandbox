@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router';
 
-export default const Player = () => {
+export default function Player() {
   const router = useRouter();
   const { pid } = router.query;
 
   return <p>Player: {pid}</p>;
-};
+}
