@@ -18,6 +18,9 @@ export default function Home() {
         <Link href="/owners">
           <a>Owners Page</a>
         </Link>
+        <Link href="/supabase">
+          <a>Supabase</a>
+        </Link>
       </div>
       <div>
         <h2>Home Page</h2>
