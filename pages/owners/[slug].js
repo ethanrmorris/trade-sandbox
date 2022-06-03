@@ -3,22 +3,8 @@ import styles from '../../styles/Home.module.css';
 
 export default function Manager({ results, currentOwner }) {
   return (
-    <div className={styles.container}>
+    <>
       <h1>{currentOwner[0].team}</h1>
-      <div className={styles.gap}>
-      <Link href="/">
-          <a>Home</a>
-        </Link>
-        <Link href="/trades">
-          <a>Trades</a>
-        </Link>
-        <Link href="/stats">
-          <a>Stats</a>
-        </Link>
-        <Link href="/owners">
-          <a>Owners Page</a>
-        </Link>
-      </div>
       <div>
         {results.map((player) => (
           <div key={player.id} className={styles.anchorSpace}>
@@ -28,7 +14,7 @@ export default function Manager({ results, currentOwner }) {
           </div>
         ))}
       </div>
-    </div>
+    </>
   );
 }
 
