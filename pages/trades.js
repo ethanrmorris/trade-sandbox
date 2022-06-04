@@ -104,10 +104,11 @@ export default function Home({ results }) {
 
 export async function getStaticProps() {
   try {
-    const { data: trades } = await supabase.from('trades').select('*');
-    // .or('owner_1.eq.ethan,owner_2.eq.ethan,owner_3.eq.ethan');
-
-    const results = trades.sort((a, b) => (a.id > b.id ? 1 : -1));
+    const { data: results } = await supabase
+      .from('trades')
+      .select('*')
+      .or('owner_1.eq.ethan,owner_2.eq.ethan,owner_3.eq.ethan')
+      .order('id', { ascending: false });
 
     return {
       props: { results },

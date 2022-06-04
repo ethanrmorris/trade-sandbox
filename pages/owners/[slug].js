@@ -4,7 +4,7 @@ import styles from '../../styles/Home.module.css';
 export default function Manager({ results, currentOwner }) {
   return (
     <>
-      <h1>{currentOwner[0].team}</h1>
+      <h3>{currentOwner[0].team}</h3>
       <div>
         {results.map((player) => (
           <div key={player.id} className={styles.anchorSpace}>

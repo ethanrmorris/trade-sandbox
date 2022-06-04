@@ -107,5 +107,9 @@ a.playerName:hover {
 }
 
 .anchorSpace {
-  padding: 20px 0;
+  padding: 10px 0;
+}
+
+.container a:hover {
+  text-decoration: underline;
 }

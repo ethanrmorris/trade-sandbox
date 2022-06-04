@@ -4,6 +4,7 @@ import styles from '../../styles/Home.module.css';
 export default function Owners({ results }) {
   return (
     <>
+      <h3>Owners</h3>
       <div>
         {results.map((owner) => (
           <div key={owner.id} className={styles.anchorSpace}>

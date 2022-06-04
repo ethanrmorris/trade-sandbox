@@ -16,7 +16,10 @@ export default function Layout({ children }) {
           <a>Stats</a>
         </Link>
         <Link href="/owners">
-          <a>Owners Page</a>
+          <a>Owners</a>
+        </Link>
+        <Link href="/players">
+          <a>Players</a>
         </Link>
         <Link href="/supabase">
           <a>Supabase</a>
