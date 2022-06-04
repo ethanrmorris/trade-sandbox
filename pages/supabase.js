@@ -1,24 +1,33 @@
 import { supabase } from '../utils/supabaseClient';
 
-export default function Supabase({ data }) {
+export default function Supabase({ trades }) {
   return (
     <>
       <h2>Supabase</h2>
-      {data.map((alldata) => (
-        <div key={alldata.id}>{alldata.name}</div>
+      {trades.map((alldata) => (
+        <p key={alldata.id}>
+          {alldata.owner_1}{' '}
+          <span>
+            {alldata.owner_2} {alldata.year}
+          </span>
+          <span></span>
+        </p>
       ))}
     </>
   );
 }
 
 export async function getStaticProps() {
-  const { data } = await supabase
-    .from('career_data')
-    .select('*')
-    .eq('position', 'QB');
-  return {
-    props: {
-      data: data,
-    },
-  };
+  try {
+    const { data: trades } = await supabase
+      .from('trades')
+      .select('*')
+      .eq('owner_1', 'ethan');
+
+    return {
+      props: { trades },
+    };
+  } catch (err) {
+    console.error(err);
+  }
 }

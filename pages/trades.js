@@ -1,9 +1,11 @@
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
+import { supabase } from '../utils/supabaseClient';
 
 export default function Home({ results }) {
   return (
     <div className={styles.grid}>
+      <h1>{results.length}</h1>
       {results.map((trade) => (
         <div key={trade.id} className={styles.card}>
           <p>
@@ -18,7 +20,7 @@ export default function Home({ results }) {
                   .concat(trade.owner_1.slice(1))}
                 {' Acquires'}
               </h2>
-              {trade.players_1.map((player) => (
+              {JSON.parse(trade.players_1).map((player) => (
                 <Link href={`/players/${player.id}`}>
                   <a className={styles.playerName}>
                     {player.name}
@@ -45,7 +47,7 @@ export default function Home({ results }) {
                   .concat(trade.owner_2.slice(1))}
                 {' Acquires'}
               </h2>
-              {trade.players_2.map((player) => (
+              {JSON.parse(trade.players_2).map((player) => (
                 <Link href={`/players/${player.id}`}>
                   <a className={styles.playerName}>
                     {player.name}
@@ -73,7 +75,7 @@ export default function Home({ results }) {
                     .concat(trade.owner_3.slice(1))}
                   {' Acquires'}
                 </h2>
-                {trade.players_3.map((player) => (
+                {JSON.parse(trade.players_3).map((player) => (
                   <Link href={`/players/${player.id}`}>
                     <a className={styles.playerName}>
                       {player.name}
@@ -102,9 +104,11 @@ export default function Home({ results }) {
 
 export async function getStaticProps() {
   try {
-    const res = await fetch('https://ethanrmorris.github.io/v1/trades.json');
-    const data = await res.json();
-    const results = data.reverse();
+    const { data: trades } = await supabase.from('trades').select('*');
+    // .or('owner_1.eq.ethan,owner_2.eq.ethan,owner_3.eq.ethan');
+
+    const results = trades.sort((a, b) => (a.id > b.id ? 1 : -1));
+
     return {
       props: { results },
     };
