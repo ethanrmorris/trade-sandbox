@@ -113,3 +113,8 @@ a.playerName:hover {
 .container a:hover {
   text-decoration: underline;
 }
+
+.image {
+  height: 350px;
+  width: auto;
+}

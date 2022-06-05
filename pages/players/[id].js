@@ -10,9 +10,11 @@ export default function Player({ results }) {
         {results[0].full_name} - {results[0].number}
       </h5>
       <img
-        src={`data="https://sleepercdn.com/content/nfl/players/${results[0].player_id}.jpg"`}
+        className={styles.image}
+        src={`https://sleepercdn.com/content/nfl/players/${results[0].player_id}.jpg`}
       ></img>
       <img
+        className={styles.image}
         src={`https://sleepercdn.com/images/team_logos/nfl/${results[0].team.toLowerCase()}.png`}
       ></img>
     </div>
