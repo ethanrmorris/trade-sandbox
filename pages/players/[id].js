@@ -7,15 +7,19 @@ export default function Player({ results }) {
     <div className={styles.card}>
       <h3>Players</h3>
       <h5>
-        {results[0].full_name} - {results[0].number}
+        {results.full_name} - {results.number} - {results.asmc}
       </h5>
       <img
         className={styles.image}
-        src={`https://sleepercdn.com/content/nfl/players/${results[0].player_id}.jpg`}
+        src={`https://sleepercdn.com/content/nfl/players/${results.player_id}.jpg`}
       ></img>
       <img
         className={styles.image}
-        src={`https://sleepercdn.com/images/team_logos/nfl/${results[0].team.toLowerCase()}.png`}
+        src={
+          results.team
+            ? `https://sleepercdn.com/images/team_logos/nfl/${results.team.toLowerCase()}.png`
+            : null
+        }
       ></img>
     </div>
   );
@@ -43,9 +47,13 @@ export async function getStaticProps({ params }) {
     const players = await res.json();
     const newResults = Object.values(players);
 
-    const results = newResults.filter((obj) => {
+    const [lastResults] = newResults.filter((obj) => {
       return obj.player_id === params.id;
     });
+
+    const results = { ...lastResults, asmc: 'ethan' };
+
+    console.log(results);
 
     return {
       props: { results },
