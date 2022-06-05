@@ -9,6 +9,12 @@ export default function Player({ results }) {
       <h5>
         {results[0].full_name} - {results[0].number}
       </h5>
+      <img
+        src={`data="https://sleepercdn.com/content/nfl/players/${results[0].player_id}.jpg"`}
+      ></img>
+      <img
+        src={`https://sleepercdn.com/images/team_logos/nfl/${results[0].team.toLowerCase()}.png`}
+      ></img>
     </div>
   );
 }
@@ -35,13 +41,9 @@ export async function getStaticProps({ params }) {
     const players = await res.json();
     const newResults = Object.values(players);
 
-    // console.log(newResults);
-
     const results = newResults.filter((obj) => {
       return obj.player_id === params.id;
     });
-
-    console.log(results);
 
     return {
       props: { results },
