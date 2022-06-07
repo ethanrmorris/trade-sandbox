@@ -1,17 +1,17 @@
-import styles from '../../styles/Home.module.css';
 import Link from 'next/link';
+import PlayerCard from '../../components/PlayerCard';
 
 export default function Players({ results }) {
   return (
-    <div>
-      <h3>Players</h3>
-      {results.map((owner) => (
-        <div key={owner.player_id} className={styles.anchorSpace}>
-          <Link href={`/players/${owner.player_id}`}>
-            <a>{owner.full_name}</a>
-          </Link>
-        </div>
-      ))}
+    <div className="grid lg:grid-cols-4">
+      <PlayerCard id={results[1234]} />
+      <PlayerCard id={results[4881]} />
+      <PlayerCard id={results[6813]} />
+      <PlayerCard id={results[2505]} />
+      <PlayerCard id={results[5012]} />
+      <PlayerCard id={results[6801]} />
+      <PlayerCard id={results[6151]} />
+      <PlayerCard id={results[6794]} />
     </div>
   );
 }
@@ -19,8 +19,7 @@ export default function Players({ results }) {
 export async function getStaticProps() {
   try {
     const res = await fetch('https://ethanrmorris.github.io/v1/players.json');
-    const data = await res.json();
-    const results = Object.values(data);
+    const results = await res.json();
 
     return {
       props: { results },

@@ -1,20 +1,17 @@
-import styles from '../../styles/Home.module.css';
 import Link from 'next/link';
 import { supabase } from '../../utils/supabaseClient';
 
 export default function Player({ results }) {
   return (
-    <div className={styles.card}>
+    <div>
       <h3>Players</h3>
       <h5>
         {results.full_name} - {results.number} - {results.asmc}
       </h5>
       <img
-        className={styles.image}
         src={`https://sleepercdn.com/content/nfl/players/${results.player_id}.jpg`}
       ></img>
       <img
-        className={styles.image}
         src={
           results.team
             ? `https://sleepercdn.com/images/team_logos/nfl/${results.team.toLowerCase()}.png`

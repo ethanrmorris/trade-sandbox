@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import styles from '../../styles/Home.module.css';
 
 export default function Owners({ results }) {
   return (
@@ -7,7 +6,7 @@ export default function Owners({ results }) {
       <h3>Owners</h3>
       <div>
         {results.map((owner) => (
-          <div key={owner.id} className={styles.anchorSpace}>
+          <div key={owner.id}>
             <Link href={`/owners/${owner.id}`}>
               <a>{owner.team}</a>
             </Link>

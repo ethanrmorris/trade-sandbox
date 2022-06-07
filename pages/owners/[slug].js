@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import styles from '../../styles/Home.module.css';
 
 export default function Manager({ results, currentOwner }) {
   return (
@@ -7,7 +6,7 @@ export default function Manager({ results, currentOwner }) {
       <h3>{currentOwner[0].team}</h3>
       <div>
         {results.map((player) => (
-          <div key={player.id} className={styles.anchorSpace}>
+          <div key={player.id}>
             <Link href={`/players/${player.player_id}`}>
               <a>{`${player.number} ${player.position} ${player.full_name}`}</a>
             </Link>

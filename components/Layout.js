@@ -1,11 +1,10 @@
 import Link from 'next/link';
-import styles from '../styles/Home.module.css';
 
 export default function Layout({ children }) {
   return (
-    <div className={styles.container}>
+    <div>
       <h1>Chug League</h1>
-      <div className={styles.gap}>
+      <div>
         <Link href="/">
           <a>Home</a>
         </Link>
