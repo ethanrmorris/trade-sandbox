@@ -3,7 +3,7 @@ import PlayerCard from '../../components/PlayerCard';
 
 export default function Players({ results }) {
   return (
-    <div className="grid lg:grid-cols-4">
+    <div className="grid grid-cols-auto-fit-100 gap-8">
       <PlayerCard id={results[1234]} />
       <PlayerCard id={results[4881]} />
       <PlayerCard id={results[6813]} />
